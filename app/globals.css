@@ -3,6 +3,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --goButton: hwb(240 40% 0%); /* 120 default blue */
+  --goButtonHover: hwb(250 10% 5%);
+  --lightBg: hwb(212 95% 0%); /* 240 default blue */
 }
 
 @theme inline {
@@ -10,6 +13,9 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-goButton: var(--goButton);
+  --color-goButtonHover: var(--goButtonHover);
+  --color-lightBg: var(--lightBg);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,8 +25,23 @@
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  body {
+    @apply font-serif tracking-wide bg-lightBg;
+  }
+  .go-button {
+    @apply px-4 py-2 bg-goButton transition duration-200 ease-in-out hover:shadow-lg hover:bg-goButtonHover text-white active:bg-indigo-700 active:shadow-sm active:ring-2 active:ring-indigo-400 active:ring-offset-1 active:scale-95;
+  }
+  .title {
+    @apply text-2xl tracking-wide font-extrabold italic bg-gradient-to-r from-[#018ffb] via-[#0b36f3] via-80% to-[#5410ff] bg-clip-text text-transparent;
+  }
+  .landing-formLabel {
+    @apply ml-2;
+  }
+  .landing-formInput {
+    @apply pl-4 pr-10 py-2 w-full border-2 rounded-xl;
+  }
+  .landing-hidePass {
+    @apply absolute right-0 top-0 cursor-pointer p-2.5;
+  }
 }
