@@ -15,3 +15,13 @@ export type NewUserAuth = {
   password: string;
   createdAt: Date;
 };
+
+export type LoginUserType = {
+  username: string;
+  password: string;
+};
+
+export type CheckPasswordType = {
+  password: string;
+  hashPass: string;
+};

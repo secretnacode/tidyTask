@@ -16,12 +16,22 @@
   --color-goButton: var(--goButton);
   --color-goButtonHover: var(--goButtonHover);
   --color-lightBg: var(--lightBg);
+  --animate-toRight: toRight 1s ease-in-out;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+  }
+}
+
+@keyframes toRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
   }
 }
 
@@ -43,5 +53,20 @@
   }
   .landing-hidePass {
     @apply absolute right-0 top-0 cursor-pointer p-2.5;
+  }
+  .notif {
+    @apply ring-2 absolute top-0 right-0 rounded-lg pl-3 pr-5 py-3 mt-5 mr-5 animate-toRight;
+  }
+  .notif div div span {
+    @apply text-sm font-black font-sans tracking-wider;
+  }
+  .notif div div p {
+    @apply min-w-[100px] max-w-[300px] text-wrap font-sans;
+  }
+  .nav-link {
+    @apply flex flex-row items-center gap-4 ml-6 p-2 my-1;
+  }
+  .icon-nav {
+    @apply stroke-[1] size-10;
   }
 }

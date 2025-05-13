@@ -5,5 +5,5 @@ export type NotificationType = {
 
 export interface NotificationContextType {
   notification: NotificationType;
-  setNotification: React.Dispatch<React.SetStateAction<NotificationType>>;
+  showNotification: ({ message, type }: NotificationType) => void;
 }
