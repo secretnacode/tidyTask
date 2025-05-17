@@ -5,17 +5,23 @@
   --foreground: #171717;
   --goButton: hwb(240 40% 0%); /* 120 default blue */
   --goButtonHover: hwb(250 10% 5%);
-  --lightBg: hwb(212 95% 0%); /* 240 default blue */
+  --lightBg: hwb(216 94% 0%); /* 240 default blue */
+  --color1: #019bfb;
+  --color2: #0b39f3;
+  --color3: #6010ff;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
   --color-goButton: var(--goButton);
   --color-goButtonHover: var(--goButtonHover);
   --color-lightBg: var(--lightBg);
+  --color-color1: var(--color1);
+  --color-color2: var(--color2);
+  --color-color3: var(--color3);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
   --animate-toRight: toRight 1s ease-in-out;
 }
 
@@ -37,13 +43,13 @@
 
 @layer utilities {
   body {
-    @apply font-serif tracking-wide bg-lightBg;
+    @apply tracking-wide bg-lightBg font-sans;
   }
   .go-button {
     @apply px-4 py-2 bg-goButton transition duration-200 ease-in-out hover:shadow-lg hover:bg-goButtonHover text-white active:bg-indigo-700 active:shadow-sm active:ring-2 active:ring-indigo-400 active:ring-offset-1 active:scale-95;
   }
   .title {
-    @apply text-2xl tracking-wide font-extrabold italic bg-gradient-to-r from-[#018ffb] via-[#0b36f3] via-80% to-[#5410ff] bg-clip-text text-transparent;
+    @apply font-serif text-2xl tracking-wide font-extrabold italic bg-gradient-to-r from-[#019bfb] via-[#0b39f3] via-80% to-[#6010ff] bg-clip-text text-transparent;
   }
   .landing-formLabel {
     @apply ml-2;
@@ -55,7 +61,7 @@
     @apply absolute right-0 top-0 cursor-pointer p-2.5;
   }
   .notif {
-    @apply ring-2 absolute top-0 right-0 rounded-lg pl-3 pr-5 py-3 mt-5 mr-5 animate-toRight;
+    @apply ring-2 absolute top-0 right-0 rounded-lg pl-3 pr-5 py-3 mt-5 mr-5 animate-toRight z-50;
   }
   .notif div div span {
     @apply text-sm font-black font-sans tracking-wider;
@@ -64,9 +70,96 @@
     @apply min-w-[100px] max-w-[300px] text-wrap font-sans;
   }
   .nav-link {
-    @apply flex flex-row items-center gap-4 ml-6 p-2 my-1;
+    @apply flex flex-row items-center gap-4 ml-6 p-2 my-1 hover:scale-105 transition duration-150 ease-in-out;
+  }
+  .nav-link span {
+    @apply font-sans text-lg;
   }
   .icon-nav {
     @apply stroke-[1] size-10;
+  }
+  .title-page {
+    @apply font-extrabold text-3xl font-mono;
+  }
+  .status-cards {
+    @apply bg-white rounded-xl p-4 flex flex-col gap-3;
+  }
+  /* style for the status card that can be clicked */
+  .status-cards:first-child {
+    @apply shadow-md hover:scale-105 hover:shadow-xl transition ease-in-out duration-150 active:scale-95;
+  }
+  .status-cards:not(:first-child) p:last-of-type {
+    @apply flex justify-between items-center;
+  }
+  .status-cards div:first-of-type span {
+    @apply p-1 rounded-[4px] inline-flex;
+  }
+  .status-cards span svg {
+    @apply stroke-[1.5] size-10;
+  }
+  .status-cards p:first-of-type {
+    @apply font-semibold text-color3 text-xl font-mono;
+  }
+  .status-cards:first-child p:last-of-type {
+    @apply text-[15px] text-nowrap whitespace-nowrap overflow-hidden text-ellipsis capitalize;
+  }
+  .status-cards:not(:first-child) p:last-of-type span:first-of-type {
+    @apply w-[50%] whitespace-nowrap overflow-hidden text-ellipsis;
+  }
+  .status-cards:not(:first-child) p:last-of-type span:last-of-type {
+    @apply text-gray-500 text-[14px];
+  }
+  .process-status-card div span {
+    @apply bg-[#FFC107];
+  }
+  .pending-status-card div span {
+    @apply bg-[#ADD8E6];
+  }
+  .cancel-status-card div span {
+    @apply bg-[#70ed75];
+  }
+  .due-status-card div span {
+    @apply bg-[#ffa9a3];
+  }
+  .dashboard-table {
+    @apply w-full mt-5 mx-5;
+  }
+  .dashboard-table thead th {
+    @apply text-left;
+  }
+  .dashboard-table tr th,
+  .dashboard-table tr td {
+    @apply py-2;
+  }
+  .task-table {
+    @apply w-full mt-5 capitalize;
+  }
+  .task-table thead th {
+    @apply text-left;
+  }
+  .task-table tr th,
+  .task-table tr td,
+  .dueToday-task tr th,
+  .dueToday-task tr td {
+    @apply p-2;
+  }
+  .task-table tbody tr,
+  .dueToday-task tbody tr {
+    @apply hover:bg-gray-100 transition duration-200 ease-in-out;
+  }
+  .task-table tr th,
+  .dueToday-task tr th {
+    @apply border-b-2 border-gray-200;
+  }
+  .task-table tr:not(:last-of-type),
+  .dueToday-task tr:not(:last-of-type) {
+    @apply border-b-2 border-gray-200;
+  }
+  /* modal filter design in the thead */
+  .task-thead tr th {
+    @apply relative cursor-pointer;
+  }
+  .filterModal {
+    @apply absolute bg-white flex flex-col justify-center items-center text-sm font-medium;
   }
 }

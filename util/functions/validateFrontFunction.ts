@@ -60,7 +60,7 @@ export function ValidateUserSignup(
 export function CheckUserInput<T extends object>(data: T): ValidateReturnType {
   for (const value of Object.values(data)) {
     // validate if all the field has a value
-    if (value === "")
+    if (value === "" || value === undefined)
       return {
         validate: false,
         message: `All Input field should have a value`,
@@ -72,8 +72,25 @@ export function CheckUserInput<T extends object>(data: T): ValidateReturnType {
   };
 }
 
-export function ValidateUserLogin(data: LoginUserType): ValidateReturnType {
-  const checkInput = CheckUserInput<LoginUserType>(data);
+export function ValidateUserLogin<T extends object | LoginUserType>(
+  data: T
+): ValidateReturnType {
+  const checkInput = CheckUserInput<T>(data);
+
+  // validate if all the field has a value
+  if (!checkInput.validate)
+    return {
+      validate: false,
+      message: checkInput.message,
+    };
+
+  return { validate: true, message: "All value is valid" };
+}
+
+export function ValidateAddTaskValue<T extends object>(
+  data: T
+): ValidateReturnType {
+  const checkInput = CheckUserInput<T>(data);
 
   // validate if all the field has a value
   if (!checkInput.validate)

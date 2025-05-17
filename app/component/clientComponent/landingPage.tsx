@@ -34,7 +34,7 @@ export function LandingForm() {
 export function SignUp({
   handleSignUpForm,
 }: {
-  handleSignUpForm: (val: boolean) => void;
+  handleSignUpForm?: (val: boolean) => void;
 }) {
   const [passHide, setPassHide] = useState<boolean>(true);
   const [confirmPassHide, setConfirmPassHide] = useState<boolean>(true);
@@ -46,7 +46,7 @@ export function SignUp({
   });
 
   const handleLogInFormView = useCallback(() => {
-    handleSignUpForm(false);
+    if (handleSignUpForm) handleSignUpForm(false);
   }, [handleSignUpForm]);
 
   const handleUserVal = useCallback((e: ChangeEvent<HTMLInputElement>) => {
@@ -81,7 +81,7 @@ export function SignUp({
 
         // if the response is ok, set the form into login form and setting a notification
         // that will indicate that the user is created successfully
-        handleSignUpForm(false);
+        if (handleSignUpForm) handleSignUpForm(false);
         showNotification({
           message: "User created successfully",
           type: "success",
@@ -245,7 +245,7 @@ export function LogIn({
         // check if the response is ok, if not, throw an error
         if (!res.ok) throw new Error(data.message);
 
-        route.push(`/${data.userId}/dashboard`);
+        route.push(`/${data.userId}`);
       } catch (error) {
         const err = error as Error;
         console.log(err.message);

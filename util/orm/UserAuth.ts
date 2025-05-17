@@ -4,11 +4,12 @@ import {
   GetAllUsenameType,
   GetUserByUsernameType,
 } from "@/type/ormType/UserAuthType";
+import { NextResponse } from "next/server";
 
 export async function CreateNewUser(data: NewUserAuth) {
   try {
     await pool.query(
-      `insert into tasktidy.user ("userId", "username", "password", "createdAt") values ($1, $2, $3, $4)`,
+      `insert into tasktidy.user ("userId", "username", "password", "createdAt") values (($1), ($2), ($3), ($4))`,
       [data.id, data.username, data.password, data.createdAt]
     );
 
@@ -47,6 +48,40 @@ export async function GetUserByUsername(
     console.error("Error getting user value by username", error);
     throw new Error(
       `Error getting user value by username ${err.message as string}`
+    );
+  }
+}
+
+export async function GET(req: Request) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const userId = searchParams.get("userId");
+
+    if (!userId) {
+      return NextResponse.json(
+        { message: "User ID is required" },
+        { status: 400 }
+      );
+    }
+
+    const query = `
+      SELECT * FROM tasks 
+      WHERE user_id = $1 
+      AND status IN ('complete', 'cancelled')
+      ORDER BY updated_at DESC
+    `;
+
+    const result = await pool.query(query, [userId]);
+
+    return NextResponse.json({
+      message: "Archived tasks fetched successfully",
+      data: result.rows,
+    });
+  } catch (error) {
+    console.error("Error fetching archived tasks:", error);
+    return NextResponse.json(
+      { message: "Error fetching archived tasks" },
+      { status: 500 }
     );
   }
 }

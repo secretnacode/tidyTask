@@ -1,4 +1,4 @@
-import { LoginPostType } from "@/type/responseType.ts/userAuthType";
+import { LoginPostType } from "@/type/responseType/userAuthType";
 import {
   CheckPassword,
   UsernameExist,

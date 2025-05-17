@@ -10,6 +10,7 @@ export async function POST(req: NextRequest) {
 
     const checkUser = await UsernameExist(data.username);
 
+    // will return an error if the username already exist
     if (checkUser.isExist) throw new Error(checkUser.message);
 
     const newUser = {
@@ -18,6 +19,8 @@ export async function POST(req: NextRequest) {
       password: HashPassword(data.password),
       createdAt: new Date(),
     };
+
+    // inserting the new user in the database
     await CreateNewUser(newUser);
 
     return NextResponse.json(
