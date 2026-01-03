@@ -21,7 +21,7 @@ export function ArchivedTaskTable({
 }: {
   taskVal: AllTaskValueType[];
 }) {
-  const [tasks, setTasks] = useState(taskVal);
+  const [tasks] = useState(taskVal);
 
   return (
     <table className="w-full">

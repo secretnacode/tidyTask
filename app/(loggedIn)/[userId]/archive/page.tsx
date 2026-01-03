@@ -1,7 +1,13 @@
 import { ArchivedTaskTable } from "@/app/component/clientComponent/archivePage";
 import { fetchArchivedTasks } from "@/util/orm/Archive";
 
-export default async function Page({ params }: { params: { userId: string } }) {
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ userId: string }>;
+}) {
+  console.log((await params).userId);
+
   const archivedTasks = await fetchArchivedTasks((await params).userId);
 
   return (

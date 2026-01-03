@@ -43,11 +43,11 @@ export default function Page() {
           <div className="px-5 xl:px-10">
             <h1 className="text-6xl md:mb-5">
               Where{" "}
-              <span className="italic bg-gradient-to-r from-[#e01c98] via-[#f61010] via-50% to-[#ff8810] bg-clip-text text-transparent">
+              <span className="italic pr-2 bg-gradient-to-r from-[#e01c98] via-[#f61010] via-50% to-[#ff8810] bg-clip-text text-transparent">
                 Priority
               </span>{" "}
               Meets{" "}
-              <span className="italic bg-gradient-to-r from-[#1CB5E0] via-[#103af6] via-50% to-[#5410ff] bg-clip-text text-transparent">
+              <span className="italic pr-2 bg-gradient-to-r from-[#1CB5E0] via-[#103af6] via-50% to-[#5410ff] bg-clip-text text-transparent">
                 Productivity
               </span>
             </h1>
