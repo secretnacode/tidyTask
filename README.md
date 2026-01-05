@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Reporting system for Calauan, Laguna that's specialized for rice farmers
 
-## Getting Started
+A helper tool designed for both busy professionals and those struggling with procrastination built by next.js
 
-First, run the development server:
+## Purpose and Goals
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- To help users manage tasks effectively through priority-based sorting.
+- To reduce task overload and increase focus by highlighting what matters most.
+- Deliver a clutter-free and easy-to-use interface for productivity.
+- Allow users to track, manage, and complete tasks more efficiently.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Landing page
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+<img width="1914" height="921" alt="image" src="https://github.com/user-attachments/assets/70bfe631-ec24-4e0d-92d4-c0b0a9ac19a4" />
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+landing page is also the sign up page
 
-## Learn More
+<img width="1918" height="918" alt="image" src="https://github.com/user-attachments/assets/c81661f7-c68c-4c78-8e36-3128babea95f" />
 
-To learn more about Next.js, take a look at the following resources:
+sign in page if already signed up
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Dashboard
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+<img width="1919" height="917" alt="image" src="https://github.com/user-attachments/assets/ad33f58d-64db-421f-ba7a-949a53f93516" />
 
-## Deploy on Vercel
+it shows all the priority task that needs to be done immediately
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Task Page
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+<img width="1914" height="894" alt="image" src="https://github.com/user-attachments/assets/62c74f51-1c08-4dc5-acf0-a8bfad1bbd04" />
+
+shows all the task to be done and can create task
+
+## Aarchive page
+
+<img width="1919" height="921" alt="image" src="https://github.com/user-attachments/assets/7090f59f-6d74-4490-a65d-7448868320ab" />
+
+archive page where all the done task was moved
+
+## FAQ Page
+
+on production 
+
+## Profile
+
+on production
+
+
